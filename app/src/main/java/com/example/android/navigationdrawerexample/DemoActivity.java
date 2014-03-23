@@ -140,16 +140,11 @@ public class DemoActivity extends Activity {
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         if (savedInstanceState == null) {
-            selectItem(0);
+            //selectItem(0);
         }
     }
 
     private boolean mainContentTextLongClick(SelectableTextView textView) {
-        /*TextView textView = (TextView) v;
-        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-        ClipData clip = ClipData.newPlainText(textView.getText(), textView.getText());
-        clipboard.setPrimaryClip(clip);*/
-
         textView.hideCursor();
 
         TextView dictView = (TextView) findViewById(R.id.dict_panel);
@@ -161,9 +156,6 @@ public class DemoActivity extends Activity {
     }
 
     private void mainContentTextClick(SelectableTextView textView) {
-        /*Intent i = new Intent(Intent.ACTION_VIEW);
-        i.setData(Uri.parse("http://www.umanoapp.com"));
-        startActivity(i);*/
         textView.hideCursor();
 
         TextView dictView = (TextView) findViewById(R.id.dict_panel);
@@ -221,24 +213,6 @@ public class DemoActivity extends Activity {
         }
     }
 
-    private void selectItem(int position) {
-        // update the main content by replacing fragments
-       /* Fragment fragment = new PlanetFragment();
-        Bundle args = new Bundle();
-        args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
-        fragment.setArguments(args);
-
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-
-        // update selected item and title, then close the drawer
-        mDrawerList.setItemChecked(position, true);
-        setTitle(mPlanetTitles[position]);
-        mDrawerLayout.closeDrawer(mDrawerList);*/
-
-
-    }
-
     @Override
     public void setTitle(CharSequence title) {
         mTitle = title;
@@ -249,7 +223,6 @@ public class DemoActivity extends Activity {
      * When using the ActionBarDrawerToggle, you must call it during
      * onPostCreate() and onConfigurationChanged()...
      */
-
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -264,30 +237,6 @@ public class DemoActivity extends Activity {
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
-    /**
-     * Fragment that appears in the "content_frame", shows a planet
-     */
-/*    public static class PlanetFragment extends Fragment {
-        public static final String ARG_PLANET_NUMBER = "planet_number";
-
-        public PlanetFragment() {
-            // Empty constructor required for fragment subclasses
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_planet, container, false);
-            int i = getArguments().getInt(ARG_PLANET_NUMBER);
-            String planet = getResources().getStringArray(R.array.planets_array)[i];
-
-            int imageId = getResources().getIdentifier(planet.toLowerCase(Locale.getDefault()),
-                    "drawable", getActivity().getPackageName());
-            ((ImageView) rootView.findViewById(R.id.image)).setImageResource(imageId);
-            getActivity().setTitle(planet);
-            return rootView;
-        }
-    }*/
     private void showSelectionCursors(SelectableTextView textView, int x, int y) {
         int start = textView.getPreciseOffset(x, y);
 
@@ -322,18 +271,6 @@ public class DemoActivity extends Activity {
 
                 spans.setSpan(new WordSpan(0, possibleWord, getWordStatus(possibleWord)),
                         start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-/*
-                switch (getWordStatus(possibleWord)) {
-                    case 1: break;
-                    case 2:
-                        spans.setSpan(new BackgroundColorSpan(R.color.dict_word), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                        break;
-                    case 3:
-                    default:
-                        spans.setSpan(new BackgroundColorSpan(R.color.new_word), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                        break;
-                }
-*/
             }
         }
 
@@ -373,11 +310,7 @@ public class DemoActivity extends Activity {
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            selectItem(position);
+            //selectItem(position);
         }
     }
-
-    /*private ClickableSpan getClickableSpan(final String word, final int status) {
-        return new WordSpan(1, word, status);
-    }*/
 }
